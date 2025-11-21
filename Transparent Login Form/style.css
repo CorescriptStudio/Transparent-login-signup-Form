@@ -1,0 +1,270 @@
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+ /* Global Reset and Font */
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Poppins', sans-serif;
+ }
+
+ /* --- Theme Variables --- */
+ /* Default: DARK MODE */
+ :root {
+     --bg-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+     --card-bg: rgba(255, 255, 255, 0.1);
+     --card-border: rgba(255, 255, 255, 0.2);
+     --text-color: #fff;
+     --input-line: rgba(255, 255, 255, 0.5);
+     --input-placeholder: rgba(255, 255, 255, 0.7);
+     --input-focus: #fff;
+     --icon-color: rgba(255, 255, 255, 0.7);
+     --btn-gradient: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+     --profile-bg: rgba(255, 255, 255, 0.2);
+ }
+
+ /* Light Mode Overrides */
+ .light-theme {
+     --bg-gradient: linear-gradient(135deg, #f0f0f5 0%, #dcdcdc 100%);
+     --card-bg: rgba(255, 255, 255, 0.8);
+     --card-border: rgba(0, 0, 0, 0.1);
+     --text-color: #333;
+     --input-line: rgba(0, 0, 0, 0.2);
+     --input-placeholder: rgba(0, 0, 0, 0.5);
+     --input-focus: #333;
+     --icon-color: rgba(0, 0, 0, 0.6);
+     --btn-gradient: linear-gradient(90deg, #2575fc 0%, #6a11cb 100%);
+     --profile-bg: rgba(0, 0, 0, 0.1);
+ }
+
+ /* Base Styles */
+ body {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+     background: var(--bg-gradient);
+     overflow: hidden;
+     transition: background 0.5s ease;
+ }
+
+ /* Container (Card) Styles */
+ .container {
+     position: relative;
+     width: 380px;
+     height: 500px;
+     background: var(--card-bg);
+     border-radius: 20px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     backdrop-filter: blur(10px);
+     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+     border: 1px solid var(--card-border);
+     transition: all 0.5s ease-in-out;
+     overflow: hidden;
+ }
+
+ /* Theme Switcher Toggle (Positioned RELATIVE TO .container) */
+ .theme-toggle {
+     /* Positioned relative to the form container */
+     position: absolute;
+     top: 15px;
+     /* Moved down slightly */
+     right: 15px;
+     /* Moved left slightly */
+     cursor: pointer;
+     z-index: 10;
+ }
+
+ .theme-toggle .material-icons {
+     font-size: 24px;
+     /* Slightly smaller for form body */
+     color: var(--text-color);
+     padding: 8px;
+     background: var(--card-bg);
+     border-radius: 50%;
+     transition: all 0.3s ease;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     border: 1px solid var(--card-border);
+ }
+
+ .theme-toggle .material-icons:hover {
+     transform: scale(1.1);
+ }
+
+ /* Form Animation (already present) */
+ .form-box {
+     position: absolute;
+     width: 100%;
+     padding: 40px;
+     transition: all 0.5s ease-in-out;
+ }
+
+ .login-form {
+     transform: translateX(0);
+     opacity: 1;
+     pointer-events: auto;
+ }
+
+ .signup-form {
+     transform: translateX(100%);
+     opacity: 0;
+     pointer-events: none;
+ }
+
+ .container.signup-mode .login-form {
+     transform: translateX(-100%);
+     opacity: 0;
+     pointer-events: none;
+ }
+
+ .container.signup-mode .signup-form {
+     transform: translateX(0);
+     opacity: 1;
+     pointer-events: auto;
+ }
+
+ /* Profile Icon */
+ .profile-icon {
+     width: 90px;
+     height: 90px;
+     background: var(--profile-bg);
+     border-radius: 50%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin: 0 auto 30px;
+     border: 1px solid var(--card-border);
+     transition: background 0.5s ease;
+ }
+
+ .profile-icon .material-icons {
+     font-size: 50px;
+     color: var(--icon-color);
+     transition: color 0.5s ease;
+ }
+
+ /* Input Styles */
+ .input-box {
+     position: relative;
+     width: 100%;
+     height: 40px;
+     margin-bottom: 30px;
+ }
+
+ .input-box input {
+     width: 100%;
+     height: 100%;
+     background: transparent;
+     border: none;
+     outline: none;
+     border-bottom: 1px solid var(--input-line);
+     padding: 0 35px 0 5px;
+     color: var(--text-color);
+     font-size: 1em;
+     transition: all 0.3s ease;
+ }
+
+ .input-box input::placeholder {
+     color: var(--input-placeholder);
+ }
+
+ .input-box input:focus {
+     border-bottom: 1px solid var(--input-focus);
+ }
+
+ .input-box .material-icons {
+     position: absolute;
+     right: 5px;
+     top: 50%;
+     transform: translateY(-50%);
+     color: var(--icon-color);
+     font-size: 1.2em;
+     transition: color 0.5s ease;
+ }
+
+ /* Remember/Forgot Section */
+ .remember-forgot {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin: -15px 0 15px;
+     color: var(--text-color);
+     font-size: 0.9em;
+     transition: color 0.5s ease;
+ }
+
+ .remember-forgot label {
+     display: flex;
+     align-items: center;
+ }
+
+ .remember-forgot label input {
+     accent-color: var(--text-color);
+     margin-right: 5px;
+ }
+
+ .remember-forgot a {
+     color: var(--text-color);
+     text-decoration: none;
+     transition: color 0.3s ease;
+ }
+
+ .remember-forgot a:hover {
+     color: #ccc;
+ }
+
+ /* Button */
+ .btn {
+     width: 100%;
+     height: 45px;
+     background: var(--btn-gradient);
+     border: none;
+     outline: none;
+     border-radius: 20px;
+     cursor: pointer;
+     color: #fff;
+     font-size: 1em;
+     font-weight: 500;
+     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+ }
+
+ .btn:hover {
+     transform: translateY(-3px);
+     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+ }
+
+ /* Register Link */
+ .login-register {
+     color: var(--text-color);
+     text-align: center;
+     margin-top: 20px;
+     font-size: 0.9em;
+     transition: color 0.5s ease;
+ }
+
+ .login-register p a {
+     color: var(--text-color);
+     text-decoration: none;
+     font-weight: 500;
+     margin-left: 5px;
+     transition: color 0.3s ease;
+ }
+
+ .login-register p a:hover {
+     color: var(--input-line);
+ }
+
+ /* Responsive adjustments (original) */
+ @media (max-width: 480px) {
+     .container {
+         width: 90%;
+         height: auto;
+         min-height: 480px;
+     }
+
+     .form-box {
+         padding: 30px;
+     }
+ }
